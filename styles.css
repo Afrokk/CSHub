@@ -1,0 +1,237 @@
+/* CSS Reset  */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* Global Styles */
+html {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--background-color);
+}
+
+.wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+/* Variables */
+:root {
+    --primary-color: #FCA311;
+    --background-color: #f0f0f0;
+}
+
+/* Navbar */
+.navbar {
+    background-color: var(--primary-color);
+    height: 80px;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 10px;
+    height: 100%;
+}
+
+.nav-elements {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.cta {
+    display: block;
+    background-color: var(--cta-color);
+    padding: 10px 20px;
+    list-style: none;
+    border-radius: 50px;
+    background-color: black;
+    color: var(--primary-color);  
+    text-decoration: none;
+}
+
+.mobile-contact {
+    display: none;
+}
+
+.logo {
+    color: var(--background-color);
+    font-size: 2em;
+    font-weight: bold;
+    text-decoration: none;
+    z-index: 1;
+}
+
+.logo span {
+    font-weight: bold;
+    color: black;
+}
+
+.nav-links {
+    margin: auto;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-links li {
+    margin: 0 10px;
+}
+
+.nav-links li a {
+    color: black;
+    text-decoration: none;
+}
+
+.nav-links a.active {
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    color: var(--background-color); 
+}
+
+.burger {
+    display: none;
+    cursor: pointer;
+}
+
+.burger div {
+    width: 25px;
+    height: 3px;
+    background-color: var(--background-color);
+    margin: 5px;
+}
+
+@media screen and (max-width: 768px) {
+    .nav-links {
+        position: fixed;
+        right: 0px;
+        height: 100vh; 
+        top: 0; 
+        background-color: var(--primary-color);
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        width: 100%; 
+        transform: translateX(100%);
+    }
+
+    .cta {
+        display: none;
+    }
+
+    .mobile-contact {
+        display: block;
+    }
+
+    .animate-mobile-nav {
+        transition: transform 0.2s ease-in-out;
+    }
+
+    .nav-links li {
+        margin-bottom: 10px;
+        opacity: 0;
+        color: black;
+    }
+
+    .nav-links a:hover {
+        color: var(--background-color); 
+    }
+
+    .burger {
+        display: block;
+    }
+    
+    .burger div {
+        background-color: black;
+    }
+}
+
+.nav-active {
+    transform: translateX(0%);
+}
+
+.fade {
+    animation: fade 0.2s ease forwards;
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.close {
+    display: none;
+    color: black;
+    font-size: 2.1em;
+    position: absolute;
+    top: 24px;
+    right: 25px;
+    cursor: pointer;
+    animation: fade 0.2s ease forwards;
+}
+
+@media screen and (max-width: 768px) {
+    .close {
+        display: none;
+    }
+}
