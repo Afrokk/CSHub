@@ -44,17 +44,25 @@ const navSlide = () => {
   });
 };
 
-const links = document.querySelectorAll(".nav-links a");
+document.addEventListener("DOMContentLoaded", function () {
+  const links = document.querySelectorAll(".nav-links a");
+  const contactButton = document.querySelector(".cta");
+  var url = window.location.href;
 
-links.forEach((link) => {
-  link.addEventListener("click", function () {
-    links.forEach((node) => {
-      node.classList.remove("active");
+  if (url.indexOf("contact.html") > -1) {
+    contactButton.classList.add("active");
+  } else {
+    contactButton.classList.remove("active");
+  }
+
+  links.forEach((link) => {
+    link.addEventListener("click", function () {
+      links.forEach((node) => {
+        node.classList.remove("active");
+      });
+      this.classList.add("active");
     });
-    this.classList.add("active");
   });
-});
 
-document.addEventListener("DOMContentLoaded", () => {
   navSlide();
 });
