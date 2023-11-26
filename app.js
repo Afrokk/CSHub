@@ -64,5 +64,21 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+  // Search bar for Tutorials
+  document.getElementById("search").addEventListener("input", function (e) {
+    const searchValue = e.target.value.toLowerCase();
+    document.querySelectorAll("#tutorials-list li").forEach((tutorial) => {
+      const title = tutorial.querySelector("h2").textContent.toLowerCase();
+      const description = tutorial
+        .querySelector("p")
+        .textContent.toLowerCase();
+      if (title.includes(searchValue) || description.includes(searchValue)) {
+        tutorial.style.display = "";
+      } else {
+        tutorial.style.display = "none";
+      }
+    });
+  });
+
   navSlide();
 });
