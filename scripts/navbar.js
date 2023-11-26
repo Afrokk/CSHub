@@ -7,7 +7,7 @@ document.write(`
             <li><a href="../index.html" class="active">Home</a></li>
             <li><a href="./courses.html">Courses</a></li>
             <li><a href="./tutorials.html">Tutorials</a></li>
-            <li><a href="./resources.html">Resources</a></li>
+            <li><a href="./resources.php">Resources</a></li>
             <li class="mobile-contact"><a href="./contact.html">Contact</a></li>
           </ul>
           <a href="./contact.html" class="cta">Contact</a>
