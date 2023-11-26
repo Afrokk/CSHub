@@ -44,10 +44,35 @@ const navSlide = () => {
   });
 };
 
+const updateLabel = () => {
+  var inputFile = document.getElementById("fileToUpload");
+  var label = document.getElementById("fileLabel");
+  var uploadButton = document.getElementById("uploadButton");
+  var fileName = inputFile.value.split("\\").pop();
+
+  var maxLength = 20;
+  if (fileName.length > maxLength) {
+    fileName = fileName.substring(0, maxLength) + "...";
+  }
+
+  label.innerHTML = fileName ? fileName : "Choose a file";
+
+  if (fileName) {
+    uploadButton.style.display = "inline-block";
+    uploadButton.style.margin = "20px";
+    uploadButton.style.padding = "10px 20px";
+    uploadButton.style.fontSize = "1rem";
+  } else {
+    uploadButton.style.display = "none";
+    uploadButton.style.margin = "0";
+    uploadButton.style.padding = "0";
+  }
+};
+
 document.addEventListener("DOMContentLoaded", function () {
   const links = document.querySelectorAll(".nav-links a");
   const contactButton = document.querySelector(".cta");
-  var url = window.location.href;
+  let url = window.location.href;
 
   if (url.indexOf("contact.html") > -1) {
     contactButton.classList.add("active");
@@ -65,20 +90,39 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Search bar for Tutorials
-  document.getElementById("search").addEventListener("input", function (e) {
-    const searchValue = e.target.value.toLowerCase();
-    document.querySelectorAll("#tutorials-list li").forEach((tutorial) => {
-      const title = tutorial.querySelector("h2").textContent.toLowerCase();
-      const description = tutorial
-        .querySelector("p")
-        .textContent.toLowerCase();
-      if (title.includes(searchValue) || description.includes(searchValue)) {
-        tutorial.style.display = "";
-      } else {
-        tutorial.style.display = "none";
-      }
+  const tutorialsList = document.getElementById("tutorials-list");
+  if (tutorialsList) {
+    document.getElementById("search").addEventListener("input", function (e) {
+      const searchValue = e.target.value.toLowerCase();
+      document.querySelectorAll("#tutorials-list li").forEach((tutorial) => {
+        const title = tutorial.querySelector("h2").textContent.toLowerCase();
+        const description = tutorial
+          .querySelector("p")
+          .textContent.toLowerCase();
+        if (title.includes(searchValue) || description.includes(searchValue)) {
+          tutorial.style.display = "";
+        } else {
+          tutorial.style.display = "none";
+        }
+      });
     });
-  });
+  }
+
+  let modal = document.getElementById("myModal");
+  if (modal) {
+    modal.style.display = "block";
+
+    let span = document.getElementsByClassName("close")[0];
+    span.onclick = function () {
+      modal.style.display = "none";
+    };
+
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    };
+  }
 
   navSlide();
 });
