@@ -124,5 +124,33 @@ document.addEventListener("DOMContentLoaded", function () {
     };
   }
 
+  // Form Validation
+  const form = document.getElementById("contactForm");
+  if (form) {
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      let name = document.getElementById("name").value;
+      let email = document.getElementById("email").value;
+      let message = document.getElementById("message").value;
+
+      document.getElementById("validationMessage").innerHTML = "";
+
+      if (name === "" || email === "" || message === "") {
+        document.getElementById("validationMessage").innerHTML =
+          "All fields are required.";
+        return;
+      }
+
+      let emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+      if (!emailRegex.test(email)) {
+        document.getElementById("validationMessage").innerHTML =
+          "Please enter a valid email address.";
+        return;
+      }
+
+      this.submit();
+    });
+  }
   navSlide();
 });
