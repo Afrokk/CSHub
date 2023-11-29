@@ -66,4 +66,3 @@ if(!empty($_FILES["fileToUpload"]["name"])) {
 header('Location: pages/resources.php');
 exit;
 ?>
-
