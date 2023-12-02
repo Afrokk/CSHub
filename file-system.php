@@ -24,7 +24,7 @@ if(!empty($_FILES["fileToUpload"]["name"])) {
         exit;
     }
 
-    if($fileType != "pdf" && $fileType != "ppt" && $fileType != "doc" && $fileType != "docx") {
+    if($fileType != "pdf" && $fileType != "ppt" && $fileType != "pptx" && $fileType != "doc" && $fileType != "docx") {
         $_SESSION['message'] = "Sorry, only PDF, PPT, DOC & DOCX files are allowed.";
         $uploadOk = 0;
         header('Location: pages/resources.php');
@@ -39,6 +39,8 @@ if(!empty($_FILES["fileToUpload"]["name"])) {
         } else {
             switch($_FILES["fileToUpload"]["error"]) {
                 case UPLOAD_ERR_INI_SIZE:
+                    $_SESSION['message'] = "Sorry, your file is too large.";
+                    break;
                 case UPLOAD_ERR_FORM_SIZE:
                     $_SESSION['message'] = "Sorry, your file is too large.";
                     break;
