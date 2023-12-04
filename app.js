@@ -45,12 +45,12 @@ const navSlide = () => {
 };
 
 const updateLabel = () => {
-  var inputFile = document.getElementById("fileToUpload");
-  var label = document.getElementById("fileLabel");
-  var uploadButton = document.getElementById("uploadButton");
-  var fileName = inputFile.value.split("\\").pop();
+  let inputFile = document.getElementById("fileToUpload");
+  let label = document.getElementById("fileLabel");
+  let uploadButton = document.getElementById("uploadButton");
+  let fileName = inputFile.value.split("\\").pop();
 
-  var maxLength = 20;
+  let maxLength = 20;
   if (fileName.length > maxLength) {
     fileName = fileName.substring(0, maxLength) + "...";
   }
@@ -152,5 +152,7 @@ document.addEventListener("DOMContentLoaded", function () {
       this.submit();
     });
   }
+
+  // Call navSlide after DOMContentLoaded
   navSlide();
 });
