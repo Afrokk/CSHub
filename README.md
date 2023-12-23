@@ -7,9 +7,7 @@
   <h3 align="center">CSHub</h3>
 
   <p align="center">
-    <br />
     <a href="https://rb.gy/x9r4r3" target="_blank"><strong>» CHECK IT OUT »</strong></a>
-    <br />
   </p>
 </div>
 
